@@ -28,7 +28,7 @@ spec:
                       sh "sleep 8"
                       sh "oc patch bc/notification-service -p '{\"spec\":{\"resources\":{\"limits\":{\"cpu\":\"4\", \"memory\":\"4Gi\"}}}}'"
                       sh "oc start-build bc/notification-service  --follow --wait"
-                      sh "wget https://raw.githubusercontent.com/deevya2000/hello-quarkus/master/knative.yml -O knative-build.yaml"
+                      sh "wget https://raw.githubusercontent.com/deevya2000/notification-service/main/devops/knative.yml -O knative-build.yaml"
                       sh "oc get is notification-service  -o json > test.json;"
                       sh "sed -i \"s|REPO_IMAGE_NAME|image-registry.openshift-image-registry.svc:5000/${PROJECT_NAME}/${APP_NAME}|g\" knative-build.yaml"
                       sh "cat knative-build.yaml"
